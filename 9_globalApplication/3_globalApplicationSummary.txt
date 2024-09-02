@@ -1,0 +1,25 @@
+1. global DNS: Route 53 
+    -> great to route users to the closest deployment with least latency.
+    -> great for disaster recovery strategies
+
+2. Global Content Delivery Network (CDN): cloudFront
+    -> Replicate part of your application to AWS Edge locations - decrease latency.
+    -> cache common requests - improved user experience and decreased latency...
+
+3. s3 transfer Acceleration
+    ->accelerate global uploads and downloads into Amzon S3.
+
+4. AWS global accelerator 
+    -> improve global application availability and performance using the AWS global network.
+
+5. AWS outposts
+    -> Deploy outposts Racks in your own data centers to extend AWS services.
+
+6. AWS wavelength
+    -> brings AWS services to the edge of the 5G network.
+    -> ultra-low latency applications.
+
+7. AWS local zones
+    -> bring AWS resources (compute , database, storage) closer to your users.
+    -> good for latency-sensitive applications.
+    

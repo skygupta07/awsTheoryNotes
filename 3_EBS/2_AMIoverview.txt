@@ -1,0 +1,27 @@
+AMI = amazon machine image
+-> AMI are a customization of an EC2 instance...
+    -> you add your own software, configuration, operating system,monitoring..
+    -> faster boot/configuration because all your software is pre-packaged.
+
+-> AMIs are built for a specific region (and can be copied across regions)
+-> you can launch EC2 instances from: 
+    1. a public AMI: aws provided
+    2. your own AMI: you make and maintain them yourself
+    3. an AWS marketPlace AMI : an AMI someone else made (and potentially sells)
+
+-> AMI process (from an EC2 instance)
+    -> start an EC2 instance and customize it.
+    -> stop the instance (for data integrity)
+    -> build an AMI -> this will create EBS snapshots.
+    -> launch instances from other AMIs
+
+-> security group ko modify kiya and apache server wala pura code copy kiya bas last line 
+chhod diya...
+-> instance state AMI ki help se banaya....
+
+-> network settings ko edit karke existing security group ko opt kiya...
+-> phir neeche jaake advanced settings mai jaake user data ke neeche wale box mai wo
+ramKahaani likhi mene....
+
+-> instance create karne ke baad right click karke image and templates pe jaake -> create image kiya...
+

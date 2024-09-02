@@ -1,0 +1,18 @@
+just like drive, object storage in bucket 
+data as objects. 
+
+s3 -> bucket -> folder -> object -> public access 
+-------
+
+go to your desired region
+create bucket
+    standard options tick
+    bucket name unique
+    enable versioning
+
+upload and see things (would not be publicly available)
+go to permissions 
+    acl enable
+    make public => unblock all 
+
+actions mai jaake acl -> enable and then everyone ko read ki permission de di....

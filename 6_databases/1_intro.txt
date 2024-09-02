@@ -1,0 +1,116 @@
+-> storing data on disk (EFS, EBS, EC2 instance store, s3) can have its limits.
+-> sometimes, you want to store data in a database..
+
+-> you can structure the data.
+-> you build indexes to efficiently query/search through the data.
+-> you define relationship between your datasets.
+-> databases are optimized for a purpose and come with different features, shapes and 
+constraints.
+
+--> Relational Databases 
+
+-> looks like excel spreadsheets, with links between them.
+- student, dept,
+
+->> NoSQL databases
+-> non-SQL = non relational databases
+-> NoSQL databases are purpose built for specific data models and have flexible schemas 
+for building modern applications.
+
+--> benefits: 
+    flexibility, scalibility, high-performance, highly functional
+
+examples -> key-value, document, graph, in-memory, search databases.
+
+------ NoSQL data example : JSON
+
+-> JSON = javascript object notation
+-> json is a common form of data that fits into a NoSQl models
+-> data can be nested
+-> fields can change over time.
+-> support for new types: arrays, etc.
+
+
+---- databases and shared responsibility on AWS -------
+
+-> AWS offers use to manage different databases.
+-> benefits include: 
+    -> Quick Provisioning, High availability, vertical and horizontal scaling
+    -> automated backup and restore, Operations, upgrades..
+    -> operating system patching is handled by AWS. 
+    -> monitoring, alerting.
+
+==> many databases technologies could be run on EC2, but you must handle yourself the
+resiliency, backup, patching, high availability, fault tolerance, scaling....
+
+
+----- AWS RDS overview ---------
+
+-> RDS stands for Relational Databases Service
+-> it's a managed DB service for DB use SQL as a query language.
+-> it allows you to create databases in the cloud that are managed by AWS
+    .postgree .mysql . mariaDB .Oracle .Microsoft SQL sever . Aurora (AWS proprietary database)
+
+----- Advantage over using RDS versus deploying DB on EC2 ---------
+
+-> RDS is managed service: 
+    -> automated Provisioning, OS patching
+    -> continuous backups and restore to specific timestamp (point in Time Restore)
+    -> monitoring dashboards
+    -> Read replicas for improved read performance
+    -> multi AZ setup for DR(disaster Recovery)
+    -> maintenance window for upgrades
+    -> scaling capability (vertical and horizontal)
+    -> storage backed up by EBS (grp2 or io1)
+
+==> but you can't SSH into your instances...
+
+---- RDS solution architecture ----
+
+ELB    beech mai EC2 instance     SQL
+
+----- Amazon Aurora ---- 
+
+-> aurora is a proprietary technology from AWS (not open sourced)
+-> postgree and MySQL are both supported as Aurora DB.
+-> Aurora is "AWS cloud optimized" and claims 5x performance improvement over 
+MySQL on RDS, over 3x the performance of postgres on RDS.
+
+-> aurora storage automatically grows in increments of 10GB, upto 128 TB
+-> aurora costs more than RDS (20% more) -> but is more efficient
+
+-> oops !! not in free tier....
+
+
+--- hands on ---
+-> database banane ke baad snapshots bhi liye taaki restore kar saku, share kar saku....
+
+---- RDS deployment options ----
+
+1. Read Replicas 
+    -> scale the read workload of your DB.
+    -> can create upto 15 replicas.
+    -> data is only written to the main DB.
+
+2. multi AZ: 
+    -> failover in case of AZ outage (high availability)
+    -> data is only read/written to the main database.
+    -> can only have only one other AZ as failover
+
+3. muti-Region (read Replicas)
+    -> disaster Recovery in case of region issue
+    -> local performance for global reads
+    -> replication cost
+
+
+
+
+
+
+
+
+
+
+
+
+

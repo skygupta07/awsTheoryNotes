@@ -1,0 +1,39 @@
+IAM allows us to apply password policy 
+for e.g. min len, include alpha numeric, prevent password resource
+
+MFA -> multi factor Authentication
+-> we need to protect our Root Accounts and IAM users...
+
+ab login karne ke liye password ke saath one of the recognised devices bhi necessarily
+available hona hi chahiye...
+-> virutal mfa device 
+1. google authenticator , Authy
+
+-> universal 2nd factor (U2F) security key
+
+-> hardware key fob mfa device
+-> us mai ac remote jaisa..
+
+-> profile mai jaake security credentials mai jaake mfa enable karne ke liye ios ya android ki 
+applications install kara and then QR code scan karke mfa code1, code2 daala ...
+
+
+-----IAM guidelines---------
+1. don't use the root account except for aws account setup
+2. one physical user = one AWS user
+3. assign users, groups , permissions, 
+4. create strong password, use mfa, use roles,
+5. access keys for programmatic access (cli/sdk)
+6. audit permissions of your account using IAM credentials report and IAM access advisor
+7. nevers share IAM users and access keys..
+
+
+----shared responsibility model for IAM ------
+
+aws ka kaam -> icc dekhna
+infrastructure (global network security)
+configuration and vulnerability analysis
+compliance validation
+
+user ka kaam -> users, roles , groups, policies, management, monitor, 
+enable mfa, keys rotate, IAM tools for permission...q

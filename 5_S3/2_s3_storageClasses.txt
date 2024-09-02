@@ -1,0 +1,99 @@
+types of storage classes->
+
+1. amazon S3 standard -> general purpose 
+    -> 99.99 % Availability
+    -> used for frequently accesssed data
+    -> low latency and high throughput
+    -> sustain 2 concurrent facility failures.
+
+    use cases -> Big data analytics, mobile and gaming applications, content distribution.
+
+
+2. amazon s3 standard -> infrequent access (IA)
+    -> for data that is less frequently accesssed, but requires rapid access when needed
+    -> lower cost than needed.
+    -> 99.9% Availability
+    -> use cases: disaster recovery, backups
+
+
+
+3. amazon s3 one Zone-infrequent Access
+    -> high durability (99.999999999 % nine times nine) in a single digit AZ;
+    data lost when AZ is destroyed
+    -> 99.5% Availability 
+    -> use cases : storing secondary backup copies of on-premise data, or data you can recreate.
+
+
+4. amazon s3 Glacier Instant Retrieval
+    -> low cost object storage meant for archiving/backup.
+    -> pricing: price for storage + object retrieval cost
+
+    -> millisecond retrieval, great for data accessed once a quarter.
+    -> minimum storage duration of 90 days.
+
+
+5. amazon s3 Glacier Flexible Retrieval (formerly Amazon S3 Glacier)
+    -> Expedited (1 to 5 minutes), standard (3 to 5 hours), Bulk (5 to 12 hours) - free
+    -> minimum storage duration of 90 days.
+
+
+6. amazon s3 Glacier Deep Archive 
+    -> standard(12 hours) , bulk (48 hours)
+    -> minimum storage duration of 180 days.
+
+
+
+
+7. amazon s3 Intelligent Tiering
+    -> small monthly monitoring and auto-tiering fee
+    -> moves objects automatically between Access Tiers based on usage.
+    -> there are no retrieval charges in s3 Intelligent-Tiering
+
+    --> frequent Access tier (automatic) : default tier
+    --> infrequent Access tier (automatic) : objects not accessed for 30 days
+    --> archive instant access tier (automatic) : objects not accessed for 90 days
+    --> Archive access tier (optional) : configurable from 90 days to 700+ days
+    --> deep Archive Access tier (optional) : config. from 180 days to 700 days+
+
+
+
+
+-> can move between classes manually or using s3 lifecycle configurations.
+
+----s3 durability and Availability ---------
+
+-> durability 
+    -> high durability (99.99999999999% 11 times 9) of objects across multiple AZ 
+    -> If you store 10,000,000 objects with amazon s3, you can on average expect to incur
+    a loss of a single object once every 10,000 years.
+    -> same for all storage classes.
+
+-> Availability 
+    -> measures how readily Available a service is 
+    -> varies depending on storage class
+    -> Example : s3 standard has 99.99 % Availability = not Available 53 minutes a year
+
+
+
+--- storage classes ki lifecycle bhi decide kar sakte ho .... ki aapka itne din mai..
+iss wale storage class se iss wale storage class mai shift ho jaye....
+
+-> bucket ki properties mai jaake storage class wali settings theek kari...
+
+
+--- s3 Encryption -------
+
+sever side pe encryption hoga...(server encrypts the file after receiving it)
+-> client side encryption (user encrypts the file before uploading it)
+
+-----shared responsibility model for S3 ----
+
+---->aws ki responsibility 
+    1. infrastructure , configuration, compliance validation
+
+-----> user ki responsibility
+    -> s3 versioning, s3 bucket policy, s3 replication setup 
+    -> logging and monitoring , s3 storage classes
+    -> data encryption at rest and in transit..
+
+    

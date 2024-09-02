@@ -1,0 +1,243 @@
+deploying and managing infrastructure at scale section..
+
+------ cloud Formation -------- 
+
+-> cloudFormation is a declarative way of outlining your AWS infrastructure, for any resources
+(most of them are supported)
+
+-> for example, within a cloudFormation template, you say:
+    -> I want a security group.
+    -> I want two EC2 instances using the security group.
+    -> I want an s3 bucket.
+    -> I want a load balancer (ELB) in front of these machines.
+
+-> then cloudFormation creates those for you, in the right order, with the exact configuration
+that you specify...
+
+
+--- benefits of AWS cloudFormation ----
+1. infrastructure as code
+    -> no resources are manually created, which is excellent for control
+    -> changes to the infrastructure are reviewed through code.
+    matlab pura ka pura structure hi code likh ke define kar diya...
+
+
+2. cost
+    -> each resouces within the stack is tagged with an identifier so you can easily see how
+    much a stack costs you.
+    -> you can estimate the costs of your resources using the cloudFormation template.
+    -> savings strategy: In Dev, you could automation deletion of templates at 5pm and
+    recreated at 8AM,safely.
+
+3. productivity
+    -> ability to destroy and re-create an infrastructure on the cloud on the fly.
+    -> automated generation of Diagram for your templates.
+    -> declarative programming (no need to figure out ordering and orchestration)
+
+4. don't re-invent the wheel
+    -> leverage existing templates on the web
+    -> leverage the documentation
+
+5. supports (almost) all AWS resources
+    -> everything we'll see in this course is supported.
+    -> you can use "custom resources" for resources that are not supported.
+
+
+--- cloudFormation stack designer -----
+example: wordpress cloudFormation stack.
+
+we can see all the resources.
+-> we can see the relations betweeen components.
+
+-> even jab delete bhi karne gaya to bas delete kar diya main cheej now wo apne aap 
+kis order mai kis kis ko delete karna hai dekh lega...u
+
+
+----- CDK overview ---------
+AWS cloud Development Kit (CDK)
+    -> define your cloud infrastructure using a familiar language.
+        javascript/typescript , python, java, and .NET
+    -> The code is "compiled" into a cloudFormation template (json/yaml)
+
+    -> you can therefore deploy infrastructure and application runtime code together.
+        -> great for Lambda functions.
+        -> great for docker containers in ECS/EKS.
+
+    -> ec2  , ecs, application development..wala included tha code mai..
+
+----- Beanstalk overview ---------
+
+typical architecture : web App 3-tier...
+user -> interacts with ELB -> ELB further interacts with EC2 instances (managed by ASG, auto scaling group) ->
+which further interacts with amazon RDS and Amazon ElastiCache....
+
+-------- developers problems on AWS ----
+-> managing infrastructure
+-> deploying code
+-> configuring all the databases, load balancers, etc.
+-> scaling concerns.
+
+-> most web apps have the same architecture (ALB + ASG)
+-> all the developers want is for their code to run!
+-> possibly, consistently across different applications and environments.
+
+
+----- AWS Elastic Beanstalk overview --------
+
+-> elastic Beanstalk is a developer centric view of deploying an application on AWS.
+-> it uses all the components we have seen before:
+    EC2, ASG, ELB, RDS, etc...
+
+-> but it's all in one view that's easy to make sense of!
+-> we still have full control over the configuration.
+
+
+-> Beanstalk = platform as a service (PaaS) => beanstalk (X) Navratana (\/)
+-> Beanstalk is free but you pay for the underlying instances.
+
+------ Elastic Beanstalk ----------
+
+-> managed service 
+    -> instance configuration/ OS is handled by Beanstalk
+    -> deployment strategy is configurable but performed by Elastic Beanstalk.
+    -> capacity provisioning
+    -> load balancing and auto-scaling.
+    -> application health-monitoring and responsiveness.
+
+-> just the application code is the responsibility of the developer.
+
+-> three architecture models:
+    -> single instance deployment: good for dev.
+    -> LB + ASG : great for production or pre-production web applications.
+    -> ASG only : great for non-web apps in production (workers, etc)
+
+-> support for many platforms: 
+    -> GO -> java SE, java with Tomcat, .NET on windows server with IIS.
+    -> Node.js   -> PHP -> python -> ruby -> packer builder 
+    -> single container docker 
+    -> multi container docker 
+    -> preconfigured docker
+
+    -> if not supported , you can write your custom platform (advance)
+
+-> elastic Beanstalk: health monitoring 
+    -> health agent pushes metrices to cloudWatch.
+    -> checks for app health, publishes health events.
+
+-> beanstalk ne cloudFormation mai bhi apni ek stack bana li...(since navratana)
+-> even isne to ec2 instances bhi create kar diye...
+-> naya version upload karoge to wo ho jaega .. wo EC2 instances ko theek kar dega...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

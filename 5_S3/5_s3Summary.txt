@@ -1,0 +1,13 @@
+------- amazon s3 - SUMMARY ------
+
+1. Buckets vs Objects : global unique name, tied to a region.
+2. S3 security : IAM policy, S3 buckect polcy (public access) , s3 encryption
+3. s3 websites: host a static website on Amazon s3
+4. s3 versioning : multiple versions for files , prevent accidental deletes.
+5. s3 Replication: same-region or cross region, must enable versioning
+6. s3 storage classes: standard, IA, IZ-IA, intelligent, Glacier (instant, flexible, deep)
+7. snow Family: import data onto s3 through a physical device, edge computing.
+8. OpsHub: desktop application to manage snow family devices
+9. Storage Gateway: hybrid solution to extend on premise storage to S3
+
+

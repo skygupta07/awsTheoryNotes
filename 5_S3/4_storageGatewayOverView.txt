@@ -1,0 +1,32 @@
+---- hybrid cloud for storage -------
+
+-> AWS is pushin for "hybrid cloud"
+    -> part of your infrastructure is on-premises 
+    -> part of your infrastructure is on the cloud.
+
+-> This can be due to : 
+    -> long cloud migrations
+    -> security requirements
+    -> compliance requirements
+    -> IT strategy
+
+--- s3 is a proprietary storage technology (unlike EFS/NFS), so how do you expose the 
+s3 data on premise?
+
+-> AWS storage gateway
+    -> bridge between on premise data and cloud data in S3. 
+    -> files , volumes, Tapes aur   Amazon EBS, s3, Glacier ke beech mai bridge ki tarah act karta hai..aapka storage gateway...
+
+    --> types of storage gateway 
+        1. file gateway 2. volume Gateway 3. Tape Gateway
+
+
+---- AWS cloud storage Native Options -----
+    1. BLOCK -> amazon EBS, EC2 instance store
+    2. FILE -> amazon EFS
+    3. OBJECT -> Amazon s3 , Glacier
+
+
+
+
+

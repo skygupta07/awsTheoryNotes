@@ -1,0 +1,54 @@
+EFS mai aapka ek file mai kucch rakha hai and another file mai kucch rakha hai...both
+are accessible by single...
+
+jabki EBS mai dusre ko access karwane ke liye... snapshot leke paste kiya...
+
+EFS (Elastic file system)
+-> managed NFS(network file system) that can be mounted on 100s of EC2.
+-> EFS works with Linux EC2 instances in multi-AZ (availability zone)
+-> highly available, scalable, expensive(3x gp2), pay per use, no capacity planning.
+
+------- EFS-IA   infrequent access ------
+-> storage class that is cost optimized for files not accessed every day...
+-> upto 92% lower cost compared to EFS standard.
+-> EFS will automatically move your files to EFS-IA based on the last time they 
+were accessed.
+-> EFS-IA with a lifecycle policy.
+-> example : move files that are not accessed for 60 days to EFS-IA
+-> transparent to the applications accessing EFS
+
+------shared responsibility model for EC2 storage -------
+aws ki responsibility :->
+1. infrastructure
+2. replication for data for EBS volumes and EFS drives.
+3. replacing faulty hardware
+4. ensuring their employees cannot access your data.
+
+user ki responsibility :->
+1. setting up backup/snapshot
+2. setting up data encryption
+3. responsibility of any data on the drives
+4. understanding the risk of using EC2 instance store.
+
+
+---- Amazon FSx overview -----
+-> launch 3rd pary high-performance file systems on aws
+-> fully managed service
+
+example -> FSx for lustre , FSx for windows file server , FSX for NetApp ONTAP
+
+1. Amazon FSx for windows File server
+    -> a fully managed highly reliable, and scalable windows native shared file system.
+    -> built on windows file server
+    -> supports SMB protocol and windows NFTS
+    -> integrated with microsoft active directory
+    -> can be accessed from AWS or your on-premise infrastructure.
+
+2. Amazon FSx for lustre
+    -> a fully managed, high-performance, scalable file storage for High performance Computing (HPC)
+    -> The name Lustre is derived from "Linux" and "cluster" 
+    -> Machine Learning, Analytics, video processing, Financial Modeling...
+    -> scales upto 100s GB/s , millions of IOPS, sub-ms latencies...
+
+
+    

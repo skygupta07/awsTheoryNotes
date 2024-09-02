@@ -1,0 +1,180 @@
+-> highly-secure, portable devices to collect and process data at the edge, and migrate data
+into and out of AWS.
+
+-> Data migration
+    1. snowcone, 2. snowball edge   3. snowmobile
+
+-> Edge computing
+    -> snowcone -> snowball Edge
+
+----- data migration with AWS snow Family ---------
+
+challenges:
+    1. Limited connectivity
+    2. Limited Bandwidth
+    3. High Network cost
+    4. shared Bandwidth (can't maximize the line)
+    5. connection stability
+
+-> AWS snow family : offline devices to perform data migrations.
+    -> If it takes more than a week to transfer over the network over the network use, 
+    use snowball devices!
+
+--
+
+-> direct upload to s3
+or snowball use kiya yaha kind of pendrive mai apna saaman daal ke courier kar diya 
+amazon ko and unhone waha taar laga ke fast fast apne mai store kar liya..
+
+----snowball Edge (for data transfer) -----
+-> physical data transport solution: move TBs or PBs of data in or out of AWS.
+-> alternative to moving data over the network (and paying network fees)
+-> pay per data transfer job
+-> provide block storage and Amazon s3-compatible object storage.
+
+-> snowball edge storage optimized 
+    -> 80 TB of HDD capacity for block volume and s3 compatible object storage.
+
+-> snowball edge compute optimized
+    -> 42 TB of HDD or 28TB NVMe capacity for block volume and s3 compatible object storage.
+
+    -> use cases : large data cloud migrations, DC decommision, disaster recovery.
+
+
+-> snowcone and snowcone SSD
+    -> small, portable, computin anywhere ,rugged and secure, withstands harsh environments.
+    -> lightweight (4.5 pound, 2.1 kg)
+    -> device used for edge computing , storage, and data transfer
+    -> snowcone - 8 TB of HDD storage
+    -> snowcone SSD - 14 TB of SSD storage
+    -> use snowcone where snowball doesn't fit(space mai NASA wale)
+    -> must provide your own battery/cables.
+    -> can be sent back to AWS offline, or connect it to internet and use AWS Datasync to send data.
+
+    -> 2 CPUs, 4 GB of memory, wired or wireless access
+    -> USB-C power using a cord or the optional battery.
+
+
+
+
+--> AWS snowmobile  (ek bada sa truck aayega aap se data lene)
+    -> Transfer exabytes of data (1 EB = 1,000 PB = 1,000,000 TBs)
+    -> Each snowmobile has 100 PB of capacity (use multiple in parallel)
+    -> High Security: temperature controlled, GPS, 24/7 video surveillance
+    -> better than snowball if you transfer more than 10 PB.
+
+------ snow Family --- usage Process ----
+1. request snowball devices from the AWS console for delivery
+2. intall the snowball client/AWS OpsHub on your servers.
+3. connect the snowball to your servers and copy files using the client.
+4. ship back the device when you are done (goes to the right AWS facility)
+5. Data will be loaded into an S3 bucket.
+6. snowball is completely wiped.
+
+
+
+--------- Edge computing ---------
+
+-> process data while it's being created on an edge location.
+    -> A truck on the road, a ship on the sea, a mining station underground.
+
+-> These locations may have: 
+    -> limited/ no internet access.
+    -> Limited/no easy access to computing power
+
+-> we setup a snowball Edge/ snowcone device to do edge computing 
+
+-> use cases :->
+    -> preprocess data.
+    -> machine learning at the edge.
+    -> Transcoding media streams.
+
+-> eventually (if need be) we can ship back the device to AWS (for transferring data for example)
+
+
+------ snowball Edge - compute optimized ------
+    -> 104 vCPUs, 416 GiB of RAM
+    -> Optional GPU (useful for video processing or machine Learning)
+    -> 28 TB NVMe or 42TB HDD usable storage.
+    -> storage clustering Available (upto 16 nodes)
+
+
+------- snowball edge ----- storage optimized ------
+    -> upto 40 vCPUs, 80 GiB of RAM, 80 TB storage.
+
+-> All : can run EC2 instances and AWS Lambda funcitons (using AWS IoT greengrass)
+
+-> Long term deployment options: 1 and 3 years discounted pricing..
+
+
+----- AWS OpsHub --------
+
+-> historically, to use Snow Family devices, you needed a CLI (command Line Interface tool)
+-> Today, you can use AWS OpsHub (a software you can install on your computer/laptop)
+to manage your snowfamily Device.
+    -> unlocking and configuring single or clustered devices
+    -> Transferring files
+    -> Launching and managing instances running on snow Family Devices
+    -> Monitor device metrices (Storage capacity, active instances on your device)
+
+    -> Launch compatible AWS services on your devices (eg. Amazon EC2 instances, AWS data sync,
+    Network File system (NFS)).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

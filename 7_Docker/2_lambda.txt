@@ -1,0 +1,212 @@
+------why AWS lambda --------
+
+with Amazon EC2 
+    -> virtual servers in the cloud
+    -> limited RAM and CPU
+    -> continuously running
+    -> scaling means intervention to add/remove servers.
+
+with Amazon Lambda ---
+    -> virtual functions - no servers to manage!
+    -> limited by time - short executions
+    -> run on-demand.
+    -> scaling is automated.
+
+---- benefits of AWS lambda ----- 
+-> easy pricing 
+    -> pay per request and compute time.
+    -> free tier of 1.000,000 AWS lambda requests and 400,000 GBs of compute time.
+-> integrated with the whole AWS suite of services.
+
+-> event-driven: functions get invoked by AWS when needed
+-> integrated with many programming lanuages
+-> easy monitoring through AWS cloudWatch
+-> easy to get more resources per functions (upto 10GB of RAM)
+-> increasing RAM will also improve CPU and network...
+
+---- AWS lambda language support -------
+1. Node.js (javascript)
+2. python
+3. Java (java 8 compatible)
+4. c# (.NET core)
+5. Golang
+6. C# / powershell
+7. Ruby
+8. custom Runtime API (community supported, example Rust)
+
+---- lambda container image -------
+    -> the container image must implement the lambda runtime API
+    -> ECS/fargate is preferred for running arbitrary Docker images.
+
+----- example : serverless Thumbnail creation -------
+
+image uploaded by user on s3 is pushed by lambda fn which creates a thumbnail and push it into s3
+also lambda fn push metadata in dynamoDB..
+
+----- example : serverless CRON Job ---------
+
+cloudwatch events eventBridge ==  trigger every 1 hour == AWS lambda function perform a task...
+
+
+--- AWS lambda pricing : example 
+-> pay per calls:
+    first 1,000,000 (1 million = 10 lakh == 10,00,000) requests are free.
+    -> $0.20 per 1 million requests thereafter ($0.0000002 per request)
+
+-> pay per duration 
+    -> 400,000 GB-seconds of compute time per month is FREE
+    -> == 400,000 seconds if function is 1 GB RAM
+    -> == 3,200,000 seconds if function is 128 MB RAM
+    -> after that $1.00 for 600,000 GB-seconds.
+
+-> it's usually very cheap to run AWS Lambda so it's very popular.
+
+---> mene code mai kcuch mistakes kara and code deploy kiya... mere lambda fn ne wo bhi 
+pakad liya...
+
+=> lambda matlab run code without thinking about server.
+
+---- Amazon lightsail  / distractor------
+-> virtual servers, storage, databases, and networking.
+-> Low and predictable pricing
+-> simpler alternative to using EC2 , RDS, ELB, EBS, Route 53..
+-> great for people with little cloud experience.
+-> can setup notifications and monitoring for your lightsail resources.
+-> use cases: 
+    -> simple web applications has templates for LAMP, Nginx, MEAN, Node js...
+    -> websites (templates for wordpress, Magento, Plesk, Joomla)
+    -> Dev/Test environment
+
+-> has high availability but no scaling, limited AWS integrations.
+
+------ AWS Batch ---------
+-> fully managed batch processing at any scale.
+-> efficiently run 1,00,000s of computing batch jobs on AWS.
+-> a "batch" job is a job with a start and an end (opposed to continuous)
+-> batch will dynamically launch EC2 instances or spot instances.
+-> AWS batch provisions the right amount of compute/memory
+-> you submit or schedule batch jobs and AWS batch does the rest!
+-> batch jobs are defined as Docker images and run on ECS.
+
+---- batch vs Lambda --------
+
+1. Lambda 
+    -> time limit
+    -> limited runtimes
+    -> limited temporary disk space
+    -> serverless
+
+2. Batch
+    -> no time limit
+    -> any runtime as long as it's packaged as a doker's image.
+    -> rely on EBS/instance store for disk space.
+    -> relies on EC2 (can be managed by AWS)
+
+----- amazon API Gateway ------
+
+-> building a serverless API
+
+-> client -- rest api -- API gateway -- proxy requests -- lambda -- crud -- dynamo dynamoDB
+
+-> fully managed service for developers to easily create, publish, maintain, monitor, and 
+secure APIs.
+
+-> serverless and scalable
+-> supports RESTful APIs and webSocket APIs.
+-> support for security , user authentication, API throtting, API keys, monitoring.
+
+
+------other compute summary ----
+1. docker : container technology to run applications
+2. ECS : run Docker containers on EC2 instances.
+3. Fargate : run docker containers without provisioning the infrastructure.
+            serverless offering (no EC2 instances)
+
+4. ECR : private Docker Images Repository.
+5. Batch : run batch jobs on AWS across managed EC2 instances.
+6. lightsail : predictable and low pricing for simple application and DB stacks.
+
+7. Lambda : it is a serverless, functions as a service , seamless scaling, reactive.
+    -> Lambda Billing
+        by the time run * by the RAM provisioned
+        by the number of invocations
+
+    -> Language support: many programming languages except (arbitrary) Docker
+    invocation time : upto 15 minutes.
+    -> use cases: create thumbnails for images uploaded into s3.
+                    run a serverless cron job.
+
+    -> api gateway: expose lambda functions as HTTP API
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

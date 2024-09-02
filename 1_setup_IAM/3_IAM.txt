@@ -1,0 +1,34 @@
+IAM -> identity and access management
+
+actually our root account has too much pemissions and access, so now to restrict this...
+we create IAM account like for admin for public/user...
+
+using IAM I can restrict permissions to a user....
+jaisi hi mene user ki permission delete kari ... udhar user ko turant changes reflect ho gaye honge...
+
+creating groups example -> developers , operations team
+-> users of groups can be assigned JSON documents called policies
+-> we follow least privilege scheme -> i.e allowing least access to end user as much as possible..
+
+-> IAM is a global service
+
+admin user group banaya jisme akash naam ka user banaya jissey ki admin bana diya aur 
+uski access power defined kar di....
+
+dashboard mai jaake account alias banaya 
+
+IAM policies structure dekhne ko milega... version id statement
+
+version -> 2012-10-17
+id -> identifier for the policy
+statement -> one or more individual statements
+
+statements consists of ->
+1. Sid -> an identifier for the statement
+2. Effect -> whether the statement allows or denies access
+3. principal -> account/role/user to which this policy applied to..
+4. action -> list of actions this policy allows or denies
+5. Resource -> list of resources to which the action applied to
+6. condition -> when this policy is in effect (optional)
+
+

@@ -1,0 +1,103 @@
+----- s3 transfer Acceleration ----------
+-> increase transfer speed by transferring file to an AWS edge location which wll forward 
+the data to the S3 bucket in the target region.
+
+
+----- aws global accelerator -------
+
+-> improve global application availability and performance using the AWS global network.
+-> leverage the AWS internal network to optimize the route to your application (60 % improvement)
+
+-> 2 anycast IP are created for your application and traffic is sent through edge locations.
+-> the edge locations send the traffic to your application.
+
+--- AWS global accelerator vs cloudFront ---------
+
+-> they both use the AWS global network and its edge locations around the world.
+-> both services integrate with AWS shield for DDoS protection.
+
+-> cloudFront -> content Delivery Network
+    -> improves performance for your cacheable content (such as images and videos)
+    -> content is served at the edge.
+
+-> global accelerator 
+    -> no caching, proxying packets at the edge to applications running in one or more AWS regions.
+    -> improves performance for a wide range of applications over tcp or udp 
+    -> good for HTTP use cases that require static iP addresses.
+    -> good for HTTP use cases that required deterministic, fast regional failover.
+
+---- AWS wavelength -------
+
+-> wavelength zones are infrastructure deployments embedded within the telecommunications 
+providers datacenters at the edge of the 5g network.
+
+-> brings AWS services to the edge of the 5g network.
+-> example: EC2, EBS, VPC....
+
+-> ultra-low latency applications through 5G networks
+-> traffic doesn't leave the communication service provider's (CSP) network.
+-> high bandwidth and secure connection to the parent AWS region.
+-> no additional charges or service agreements.
+-> use cases: smart cities, ML-assisted diagnostics, connected vehicles, interactive live 
+video streams, AR/VR, Real-time Gaming...
+
+------ AWS Local Zones -------
+
+-> places AWS compute, storage, database, and other selected AWS services closer to end 
+users to run latency-sensitive applications.
+
+-> extend your VPC to more locations - "extension of an AWS region"
+-> compatible with EC2, RDS, ECS, EBS, ElasiCache, Direct Connect...
+
+example:
+    -> AWS region: N. virginia (US-east-1)
+    -> AWS local Zones: Boston, chicago, Dallas, Houston, Miami....
+
+
+-------- global Application architecture (1 ques) -------------
+
+case1 -> single region, single AZ   
+    -> high availability (N)
+    -> global latency (N)
+    -> difficulty (Y)
+
+case2 -> single region, multi AZ
+    -> high availability (Y)
+    -> global latency (N)
+    -> difficulty (moderate)
+
+case3 -> multi region, active-passive
+    -> active instance mai read/write dono hoga.
+    -> passive instance mai aapka read only...
+    -> global readers latency (improved)
+    -> global writers latency (not su much improved)
+    -> difficulty (moderate)
+
+case 4 -> multi region, active-active
+    -> likho padho aaram se...
+    -> difficulty (jyada)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

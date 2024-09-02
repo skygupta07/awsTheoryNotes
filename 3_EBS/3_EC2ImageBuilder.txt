@@ -1,0 +1,18 @@
+-> used to automate the creation of virtual machines or container images.
+-> automate the creation, maintain , validate and test EC2 AMIs
+can be run on a schedule (weekly, whenever packages are updated, etc...)
+-> free service (only pay for the underlying resource)
+
+-> EC2  image builder create builder EC2 instance which create new AMI which furher
+creates test EC2 instance then AMI is distributed...
+
+------ EC2 instance store -------
+-> EBS volumes are network drives with good but "limited" performance.
+-> if you need a high performance hardware disk , use EC2 instance store.
+better I/O performance, 
+-> EC2 instance store lose their storage if they are stopped (ephemeral)
+-> good for buffer/cache/scratch data/temporary content
+-> risk of data loss if hardware fails.
+-> backups and replication are your responsibility.
+
+==> local EC2 instance mai bada bada storage...

@@ -1,0 +1,162 @@
+-> the same way RDS is to get managed Relational Databases.
+-> ElastiCache is to get managed Redis of Memcached.
+-> Caches are in-memory databases with high performance, low latency...
+
+-> helps reduce load off databases for read intensive workloads.
+
+-> AWS takes care of OS maintenance/patching, optimizations, setup, configuration, monitoring
+failure recovery and backups...
+
+------ ElasticCache Soln architecture - cache -------
+                                    1.  ElasticCache(in-memory database)
+                                        Read/write from cache
+
+ELB         EC2 instances       
+
+                                    2. SQL (relational) database
+                                        Read/write from DB server
+
+
+---------- dynamoDB -----------
+-> fully managed highly available with replication across 3 AZ.
+-> NoSQL DB -> not a relational database
+-> scales to massive workloads, distributed "serverless" database.
+-> millions of requests per seconds , trillions of rows, 100s of TB of storage.
+-> single - digit millisecond latency -> low latency retrieval.
+-> integrated with IAM for security, authorization and administration.
+-> low cost and auto scaling capabilities.
+-> standard and infrequent Access (IA) table class...
+
+------- dynamo DB ---- type of data ---------
+
+-> dynamoDB is a key/value dB
+
+-- dynamo db accelerator - DAX -----
+fully managed in-memory cache for dynamo-DB
+
+-> 10x performance improvement - single-digit millisecond latency to Microsecond latency
+    when accessing your Dynamo-DB tables.
+
+-> secure, highly scalable and highly available..
+
+-> difference with ElasticCache at the CCP level: DAX is only used for and is integrated with
+Dynamo DB, while ElasticCache can be used for other databases...
+
+dynamo db ki table ko dusri table ke saath jod nahi sakte....isliye uski khud hi table ko 
+acche se likha karo...
+
+----- dynamo Db- Global TAbles ---
+make a dynamoDB table accessible with low latency in multiple regions.
+-> active - active replication (read/write to any AWS region)
+
+------- Redshift overview ------ 
+Redshift is based on Postgree SQL, but it's not used for OLTP (online Transaction Process)
+it's OLAP (Online Analytical Processing) -> analytics and warehousing 
+-> load data once every hour , not every second.
+-> 10x better performance than other data warehouses, scale to PBs of data.
+-> COLUMNAR storage of data (instead of row based)
+-> massively Parallel Query Execution (MPP), highly available
+-> pay as you go based on the instances provisioned.
+-> has a SQL interface for performing the queries.
+-> BI (Business Integration) tools such as AWS Quicksight for Tableau integrate with it.
+
+
+------ EMR overview -------
+-> EMR stands for "Elastic Map Reduce"
+-> EMR helps creating Hadoop clusters (big data) to analyze and process vast amount of data.
+-> The clusters can be made of hundreds of EC2 instances.
+-> also supports Apache Spark, HBase, Presto, Flink...
+-> EMR takes care of all the provisioning and configuration.
+-> Auto scaling and integrated with spot instances
+-> use cases : data processing, machine learning, web indexing , big data.
+
+
+------ Amazon Athena ---------- 
+-> severless query sevice to perform analytics against S3 objects.
+-> uses standard SQL language to query the files.
+-> supports CSV, JSON, ORC, Avro, and Parquet (built on presto)
+-> pricing : $5.00 per TB of data scanned.
+
+-> use compressed or columnar data for cost-savings (less scan)
+
+-> use cases: Business intelligence/analytics/reporting, analyze and query VPC flow Logs, 
+ELB logs, cloudTrail, trails, etc...
+
+-> exam tip: analyze data in S3 using serverless SQL, use Athena....
+
+
+
+-------- Amazon QuciSight ---------- 
+
+serverless machine learning-powered business intelligence service to create interactive 
+dashboards.
+
+-> fast, automatically scalable, embeddable, with per=session pricing.
+-> use cases : 
+    -> business analytics
+    -> buliding visualizations
+    -> perform ad-hoc analysis
+    -> get business insights using data
+-> integrated with RDS, Aurora, Athena, Redshift, S3....
+
+
+
+--------- DocumentDB --------
+-> Aurora is an AWS- implementation of postgreeSQL/MYSQL...
+-> DocumentDB is the same for MongoDB (which is NoSQL database)
+-> mongoDB is used to store, query, and index JSON data.
+-> similar "deployment concepts" as Aurora
+-> fully managed, highly available with replication across 3 AZ.
+-> DocumentDB storage automatically grows in increments of 10GB upto 64TB.
+-> automaically scales to workloads with millions of requests per seconds.
+
+-------- Amazon Neptune -------------
+-> fully managed graph database
+-> a popular graph dataset would be a social network
+    -> users that have friends, comments, like shares.
+
+-> highly available across 3 AZ, with upto 15 read replicas.
+-> build and run applications working with highly connected datasets - optimized for 
+these complex and hard queries
+
+-> can store upto billions of relations and query the graph with milliseconds latency.
+-> highly available with replications across multiple AZs.
+-> Great for knowledge graphs(wikipedia), fraud detection, recommendation engines, social networking.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

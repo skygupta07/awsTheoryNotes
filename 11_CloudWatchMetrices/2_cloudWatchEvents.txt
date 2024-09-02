@@ -1,0 +1,111 @@
+-------- amazon event bridge formerly cloudWatch Events-------
+-> schedule : cron jobs (scheduled scripts)
+      -> schedyle every hour that trigger script on lambda function
+
+-> event pattern: event rules to react ot a service doing something
+    -> matalb in case root user signin karta hai to SNS ke through email notification send karwa do...
+
+-> trigger Lambda functions, send SQS/SNS messages.
+
+aws services -> default event bus se linked
+aws saas partners zendesk DAtadog -> partner event BUS ke linked 
+custom apps -> custom event BUS se linked
+-> schema Registry : model event schema.
+-> you can archive events(all/filter) sent to an event bus (indefinitely or set period)
+-> ability to replay archived events.
+
+
+
+----- AWS cloudTrail ------------
+
+-> povides governance , compliacne and audit fro your aws account
+-> cloudTrail is enabled by default 
+-> get an history of events/API calls made within your AWS account by:
+     -> console -> sdk -< cli -> aws services 
+-> can put logs form cloudTrail into cloudWatch logs or s3
+-> a trail can be applied to all regions (default) or a single region.
+-> if a resource is deleted in AWS, investigate cloudTRail first.
+
+
+
+--------- AWS x-RAy ---------------------
+
+-> debugging in production, the good old way:
+     -> test locally -> add log statements everywhere -> re-deploy in production 
+
+-> log formats differ across applications and log analysis is hard.
+-> debugging: one big monolith 'easy' , distributed services 'hard'
+
+x-ray gives visual analysis of our application.
+
+=> advantages 
+     -> troubleshooting performance (bottlenecks)
+      -> understand dependencies in a microservice architecture
+      -> pinpoint service issues.
+      -> review request behaviour
+      -> find errors and exceptions
+     -> are we meerting time SLA?
+     -> where I am throttled?
+      -> identify users that are impacted.
+
+--- amazon CodeGuru ----------- 
+
+-> an ML-powered service for automated code reviews and application performance recommendations.
+-> provides two functionalities
+    1. codeGuru Reviewer: automated code reviews for static code analysis (development)
+    2. codeGuru Profiler: visiblilty/recommendations about application performance during runtime (production)
+
+------- amazon code guru Reviewer --------
+-> identify critical issues, security vulnerabilities, and hard to find buds.
+-> example: common coding best practices, resource leaks, security detection, input validation.
+-> uses machine learning and automated reasoning.
+-> hard-learned lessons across millions of code reviews on 1000s of open-source and amazon repositories.
+-> supports java and python.
+-> integrates with Github, bitbucket, and AWS CodeCommit.
+
+
+----- Amazon CodeGuru Profiler --------
+-> helps understand the runtime behaviour of your application.
+-> example: identify if your application is consuming excessive cpu capacity on a logging routine.
+-> features:
+     -> identify and remove code inefficinecs.
+    -> improve application perfomance
+     -> decrease compute costs.
+     -> provides heap summary (identify which objects using up memory)
+     -> anomaly detection.
+
+-> support applications running on AWS or on-premise.
+-> minimal overhead on application.
+
+
+-------------- AWS Health DashBoard - service history ------------ 
+-> shows all regions, all services health.
+-> shows historical information for each day.
+-> has an RSS feed you can subscribe to .
+-> previously called aWS service health dashboard.
+
+-------- AWS health Dashboard - your account -----------
+-> previously called AWS personal Health Dashboard (PHD)
+-> AWS account Health dashboard provides alerts, and remediation guidance when aws is experiencing events that may impact you.
+-> while the service health dashboard displays the general status of AWS services, accout health dashboard gives you a personalized view into the performance and availabilty of the aws services underlying your aws resources.
+-> the dashboard displays relevant and timely informaton to help you manage events in progress and provides proactive noriiaciton to help you plan for schduled activiteis.
+-> can aggregate data from an entire AWS organizations.
+ 
+
+-------- aws monitoring summary ----------- 
+1. cloudWatch:
+    -> metrices: monitor the performance of aws services and billing metrices.
+    -> alarms: automate notification, perform EC2 action, notify to SNS based on metric.
+    -> logs: collect log files from EC2 instances, servers, lambda functions.
+     -> events (or eventBridge) : react to events in AWS, or trigger a rule on a schedule.
+
+2. cloudTrail
+    audit API calls made within your aws account.
+
+3. cloud Trail Insights: automated analysis of your cloudTrail Events.
+4. x-ray: trace requests made through your distributed applications.
+5. aws health dashboard: status of all aws services across alll regions.
+6. aws Account Health Dashboard: AWS events that impact your infrastructre.
+7. amazon CodeGuru: automated code reviews and application perforamance recommendations.
+
+

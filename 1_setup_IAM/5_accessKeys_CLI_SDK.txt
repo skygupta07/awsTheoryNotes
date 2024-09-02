@@ -1,0 +1,35 @@
+-> to access aws, we have three options...
+
+1. AWS management Console (protected by password + MFA)
+2. aws command line interface (............ access keys)
+3. aws software developer kit (for code: protected by access keys)
+        embedded within your application
+
+don't share below with anyone
+access key ID === username
+secret access key === password
+
+-------
+online aws cli version 2 for mac install kiya then terminal mai jaake 
+akash@Akashs-MacBook-Air ~ % aws --version     likh diya... to get this..
+aws-cli/2.0.30 Python/3.7.4 Darwin/23.4.0 botocore/2.0.0dev34
+
+
+--------------aws cloudShell -----------
+online cli provided by the amazon...A browser-based shell with 
+AWS CLI access from the AWS Management Console
+
+------iam roles for aws services -------
+-> some aws sevice will need to perform actions on your behalf
+-> to do so, we will assign permissions to AWS services with IAM roles..
+-> common roles 
+    ->  EC2 instance roles
+    -> lambda fn roles
+    -> roles for cloud formation
+
+aws services ke liye role banaya then permission mai IAMreadonly
+
+----IAM security tools-----------
+1. IAM credentials report -> agar kabhi security breach ka khatra lage
+    to yaha se user ki permission dekh lo..
+2. IAM access providers

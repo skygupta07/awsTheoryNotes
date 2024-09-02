@@ -1,0 +1,191 @@
+--------why global application ------
+-> A global application is an application deployed in multiple geographies
+-> on AWS: this could be regions and / or Edge lcations.
+-> decreased latency 
+    -> latency is the time it takes for a network packet to reach a server.
+    -> it takes time for a packet from asia to reach the us.
+    -> deploy your application closer to your users to decrease latency, better experience.
+
+=> disaster Recovery (DR)
+    -> if and AWS region goes down (earthquake, stroms, power shutdown, politics)
+    -> you can fail-over to another region and have your application still working.
+    -> a DR plan is important to increase the availability of your application
+
+-> attack protection -> distributed global infrastructure is harder to attack.
+
+------- global AWS infrastructure -----
+-> regions : for deploying application and infrastructure.
+-> availability zones: made of multiple data centers.
+-> edge location (points of presence) : for content delivery as close as possible to users.
+
+----------global application in AWS ------
+
+1. global DNS: Route 53
+    -> great to route users to the closest deployment with least latency.
+    -> great for disaster Recovery strategies.
+
+2. global content delivery network (CDN) : cloudFront
+    -> replicate part of your application to AWS Edge locations - decrease latency 
+    -> cache common requests - improved user experience and decreased latency.
+
+3. s3 Transfer Acceleration 
+    -> Accelerate global uploads and downloads into Amazon s3.
+
+4. aws global accelerator 
+    -> improve global application availability and performance using the AWS global network.
+
+-------amazon Route 53 overview ------- 
+
+-> Route 53 is a managed DNS (Domain Name System)
+-> DNS is a collection of rules and records which helps clients understand how to reach a
+server through URLs.
+
+-> In AWS, the most common records are:
+    -> www.google.com => 12.34.56.78. == A record (IPv4)
+    -> www.google.com => 2001:0db8:85a3:00000:0000:    === AAAA IPv6
+    -> search.google.com => www.google.com == CNAME: hostname to hostname
+    -> example.com => AWS resource == Alias (example: ELB, Cloudfront, S3, RDS, etc)
+
+
+---- route 53 routing policies ----------
+
+-> need to know them at a high-level for the cloud practitioner exam.
+
+=> 1. simple routing policy 
+    -> no health checks.
+
+=> 2. weighted routing policy 
+    -> jo jitna weight handle kar sakta hai usko utna hi diya....
+
+
+=> 3. latency routing policy 
+    to minimise the latency paas wale server mai hi request route kari jaat hai...
+
+=> 4. Failover Routing Policy 
+    -> there will be health check on primary... uske hisaab se hi route 53 bhej dega healthy wale pe...
+
+-> -> arey jaake mene two instances create kare alag alag region mai and then route53 ke dashboard mai
+aake un dono instances ko hi record ki tarah treat kara and apna DNS chalwaya..
+
+ab check karne ke liye vpn laga ke US ka kiya to sach mai ab meri webiste US ke sever se load 
+hone lagi...
+
+----------- AWS cloudFront ----------
+
+-> content Delivery Network (CDN)
+-> improves read performance, content is cached at the edge.
+-> improves user experience.
+-> 216 point of presence globally (edge locations)
+-> DDoS protection (because worldwide), integration with shield, AWS web application 
+firewall.
+
+------- cloudFront - origins -----------
+
+1. s3 bucket
+    -> for distributing files and caching them at the edge.
+    -> enhanced security with cloudFront origin Access control (OAC)
+    -> OAC is replacing Origin Access Identity (OAI)
+    -> Cloudfront can be used as an ingrees (to upload files to s3)
+
+2. custom origin (HTTP)
+    -> application load balancer
+    -> EC2 instance
+    -> s3 website (must first enable the bucket as a static s3 website)
+
+-- paging ki tarah hi ho raha hai yaha...
+
+------- cloudFront vs s3 cross region Replication ----------
+
+-> cloudFront 
+    -> global edge network
+    -> files are cached for a TTL (maybe a day)
+    -> great for static content that must be available somewhere.
+
+-> s3 cross region replication 
+    -> must be setup for each region you want replication to happen.
+    -> files are updated in near real time.
+    -> read only.
+    -> great for dynamic content that needs to be available at low-latency in few regions.
+
+matlab jaake s3 bucket create kiya and uspe cloudFront wala masala laga diya taki ab wo 
+website next time local cache se load ho sake....
+
+cloudfront banate waqt usne khud hi s3 bucket wale options as a origin chose karne ko diye...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

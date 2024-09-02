@@ -1,0 +1,97 @@
+ELB (Elastic Load Balancing)
+
+-> snapshot se aap volume recover kar sakte ho....
+and image (volume + metadata) se aap puri ki puri instance (virtual machine)
+setup kar sakte ho....
+
+-> matlab ec2 instance to create kar rahe ho wo to theek hai...but ab se uski image aur 
+agar accha ec2 hai to uska launch template bhi bana ke rakh lo....
+
+hack: you can launch the ec2 instance from the launch template in few seconds...
+
+
+
+
+
+-> Load balancers are servers that forward internet traffic to multiple servers (EC2 instances)
+downstream.
+
+why Load balancer?
+-> spread load across multiple downstream instances
+-> expose a single point of access (DNS) to your application.
+-> seamlessly handle failures of downstream instances.
+-> do regular health checks to your instances
+-> provide SSL termination (HTTPS) for your website.
+
+-> an ELB (Elastic Load Balancer) is a managed load balancer
+    -> AWS guarantees that it will be working,
+    -> AWS takes cares of upgrades, maintenance, high availability
+    -> AWS provides only a few configuration knobs.
+
+-> It costs less to setup your own load balancer but it will be a lot more effort on your 
+end (maintenance, integrations)
+
+-> 4 kind of load balancer offer by aws (ANGC)
+    1. ALB (application Load Balancer) -> http/https/gRPC protocols only -> layer 7
+        HTTp routing features
+        static DNS rules
+
+    2. Network Load Balancer (ultra high performance, allows for TCP) - layer 4
+        TCP/UDP protocols (layer 4)
+        high performance: millions of request per sec.
+        static IP through Elastic IP
+
+
+    3. GLB (Gateway Load Balancer) -> layer 3
+        -> GENEVE protocol on IP packets (layer 3)
+        -> route traffic to firewalls that you manage on EC2 instances.
+        -> intrusion detection.
+        -> 3rd party security virtual appliances.
+
+
+    4. classic load balancer (retired in 2023) -> layer 3 & 4
+
+
+-> ALP laga ke two different instances ko ek hi browser pe dikha diya...
+
+-------- ASG scaling group overview ---------
+-> in real life, the load on your websites and application can change...
+-> in the cloud, you can create and get rid of servers very quickly..
+
+-> the goal of an auto scaling group ASG is to:
+    -> scale out (add EC2 instances) to match an increased load.
+    -> scale in (remove EC2 instances) to match a decreased load.
+    -> ensure we have a min. and max. number of machines running.
+    -> automatically register new instances to a load balancer.
+    -> replace unhealthy instances.
+    -> cost savings : only run at an optimal capacity (principle of cloud)
+
+----load balancer mai jaake dns name liya and chrome pe khola..
+
+
+
+----- ASG strategies -----------
+
+1. manual scaling : update the size of an ASG manually.
+2. Dynamic Scaling : Respond to changing demand. (SSTP)
+    -> simple/step scaling
+        -> when a cloudWatch alarm is triggered (example cpu > 70 %) , then add 2 units.
+        -> when a cloudWatch alarm is triggered (example cpu < 30 %), then remove 1 unit.
+
+    -> Target Tracking Scaling
+        -> example: I want the average ASG cpu to stay at around 40 percent.
+
+    -> scheduled scaling
+        anticipate a scaling based on known usage patterns.
+        -> example : increase the min. capacity to 10 at 5pm on fridays.
+
+    -> predictive scaling Groups (imp)
+        -> uses Machine learning to predict future traffic ahead of time.
+        ->automatically provisions the right number of EC2 instances in advance.
+    
+    -> useful when your load has predictable time-based patterns.
+
+    clean up karne ke liye..ASG then Load balancer ko delete kiya....
+
+    
+ 

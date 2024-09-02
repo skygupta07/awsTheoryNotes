@@ -1,0 +1,96 @@
+------ docker ------- 
+-> docker is a software development platform to deploy apps.
+-> apps are packaged in containers that can be run on any OS.
+-> Apps run the same, regardless of where thery are run.
+    -> any machine 
+    -> no compatible issues
+    -> predictable behaviour
+    -> less work
+    -> easier to maintain and deploy
+    -> works with any language, any OS, any technology...
+-> scale containers up and down very quickly (seconds)
+
+---- docker on an OS -----
+running js, node, mysql, etc.
+
+---- where docker images are stored?
+docker images are stored in docker Repositories
+-> public : docker hub
+    -> find base images for many technologies or OS:
+    -> ubuntu
+    -> MYSQL
+    -> NodeJS, Java....
+
+private: Amazon ECR (Elastic Container Registry)
+
+--- docker vs Virtual Machines ------
+-> docker is a sort of virtualization technology, but not exactly.
+-> resources are shared with the host => many containers on one server.
+
+=>docker                      
+
+containers
+docker daemon
+host OS (EC2 instance)
+infrastructure
+
+=> virtual Machines
+apps
+guest OS (VM)
+hypervisor
+host OS 
+infrastructure
+
+
+
+
+------ ECS --------
+-> ECS = Elastic Container service
+-> launch Docker containers on AWS
+-> you must provision and maintain the infrastructure (the EC2 instance)
+-> AWS takes care of starting/stopping containers
+-> has integrations with the Application Load Balancer.
+
+
+------- Fargate ---------
+-> launch docker containers on AWS.
+-> you do not provision the infrastructure (no EC2 instances to manage) - simpler!!
+-> serverless offering
+-> AWS just runs containers for you based on the CPU/RAM you need.
+
+
+-------- ECR ---------
+-> Elastic container Registry 
+-> private docker registry on AWS.
+-> this is where you store your docker images so that they can be run by ECS or Fargate.
+
+paper : ecs vs fargate vs ECR 
+
+------ serverless introduction ---------
+-> serverless is a new paradigm in which the developers don't have to manage servers anymore.
+-> they just deploy code.
+-> they just deploy ... functions!!
+
+-> initially... serverless == FaaS (function as a service)
+-> serverless was pioneered by AWS Lambda but now also includes anything that's managed.
+databases, messaging , storage,etc.
+
+
+-> serverless doesn't mean there are no servers.
+    it means you just don't manage/provision/see them.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,40 @@
+--------- Amazon QLDB ------ 
+-> QLDB stands for Quantum Ledger Database
+-> A ledger is a book recording financial Transactions.
+-> fully managed, serverless, high available, replications across 3 AZ.
+-> used to review history of all the changes made to your application data over time.
+-> immutable system: no entry can be removed or modified , cryptographically verifiable.
+
+-> 2-3x better performance than common ledger blockchain frameworks, manipulated data using SQL.
+-> difference with Amazon Managed blockhain, no decentralization component, in accordance with financial 
+regulation rules.
+
+
+-------- Amazon managed Blockchain ----------
+-> blockchain makes it possible to build applications where multiple parties can execute transactions without
+the need for a trusted, central authority.
+
+-> Amazon Managed BlockChain is a managed service to: 
+    -> join public blockchain networks.
+    -> or create your own scalable private network.
+
+-> compatible with the frameworks Hyperledger Fabric and Ethereum..
+
+
+
+---- AWS GLUE ------------
+-> managed extract, transform, and load (ETL) service.
+-> useful to prepare and transform data for analytics
+-> fully severless service
+
+
+==> s3 bucket aur amazon RDS se extract kiya and glue laga ke Redshift mai load kiya...
+
+-> glue data catalog: catalog of datasets....
+
+
+
+
+
+ 
+

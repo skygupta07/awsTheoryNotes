@@ -1,0 +1,11 @@
+1. high availability vs scalability (vertical and horizontal) vs Elasticity vs Agility
+in the cloud.
+
+2. Elastic Load Balancers (ELB)
+    -> distribute traffic across backend EC2 instances, can be multi AZ
+    -> 4 types: classic(old) , application (HTTP - L7), Network (TCP - L4), Gateway (L3)
+
+3. Auto scaling Groups
+    -> implement Elasticity for your application, across multiple AZ.
+    -> scale EC2 instances based on the demand of your system, replace unhealthy/
+    -> integrated with the ELB.

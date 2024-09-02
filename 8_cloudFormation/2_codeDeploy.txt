@@ -1,0 +1,170 @@
+------- codeDeploy ------
+
+-> we want to deploy our application automatically.
+-> works with EC2 instances.
+-> works with on-premises servers.
+-> hybrid service
+
+-> servers/intances must be provisioned and configured ahead of time with the codeDeploy Agent.
+
+----AWS ka code commit ----------
+
+-> before pushing the application code to servers, it needs to be stored somewhere.
+-> developers usually store code in a github, AWS competing product is codecommit.
+-> codecommit
+    -> source-control service that hosts git based Repository
+    -> makes it easy to collaborate with others on code.
+    -> the code changes are automatically versioned.
+
+=> benefits: 
+        -> fully managed.
+        -> scalable and highly available.
+        -> private, secured, integrated with AWS..
+
+
+--------- codeBuild overview ----------
+
+-> code building service in the cloud.
+-> compiles source code , run tests, and produce packages that are ready to be deployed
+(by codeDeploy) for example
+-> benefits
+    -> fully managed, serverless
+    -> continuously , scalable and highly available.
+    -> secure.
+    -> pay as you go pricing - only pay for the build time.
+
+-------- AWS code pipeline --------
+
+-> orchestrate the different steps to have the code automatically pushed to production
+    -> code -> build -> test -> provision -> deploy 
+    -> basis for CICD (continuous integration and continuous delivery)
+
+-> benefits: 
+    -> fully managed, compatible with codecommit, codebuild, codeDeploy,Elastic Beanstalk,
+    cloudFormation, github, 3rd party services (github...) and custom plugins.
+
+    -> fast delivery and rapid updates.
+    
+
+------ AWS codeArtifact ------------
+-> software packages depend on each other to be built (also called code dependencies)
+, and new ones are created.
+-> storing and retrieving these dependencies is called artifact management.
+-> traditionally you need to setup your own artifact management system.
+-> codeArtifact is a secure, scalable, and cost effective artifact management for software
+develpment.
+-> works with common dependency management tools such as Maven, Gradle, npm, yarn, twine,
+pip and NuGet.
+-> developers and codeBuild can then retrieve dependencies straight from codeArtifact.
+
+
+
+----- AWS CodeStar (jhalmuri) -----------
+-> unified UI to easily manage software development activities in one place.
+-> "quick-way" to get started to correctly set-up codeCommit , codepipeline, codebuild,
+codeDeploy, ElasticBeanStalk, EC2, etc.
+
+-> can edit the code "in-the-cloud" using AWS Cloud9
+
+------ AWS cloud9-------
+-> AWS cloud9 is a cloud IDE (inegrated Development Environment) for writing, running
+and debugging code.
+-> "classic" IDE (like Intellij, visual studio code..)
+are downloaded on a computer before being used.
+
+
+-> A cloud IDE can be used within a web browser, meaning you can work on your projects from
+your office, home or anywhere with internet with no setup necessary.
+
+
+-> AWS cloud9 also allows for code collaboration in real-time (pair programming)
+
+------- AWS systems Manager (SSM) -----------
+
+-> helps you manage your EC2 and on-premises systems at scale.
+-> another hybrid AWS service.
+-> get operational insights about the state of your infrastructure.
+-> suite of 10 + products.
+-> most important features are: 
+    -> patching automation for enhanced compliance.
+    -> run commands across an entire fleet of servers.
+    -> store parameter configuration with the SSM parameter store.
+
+-> works for Linux, windows, MacOS and Raspberry pi OS (Raspbian)
+
+------- how systems manage works ------
+
+-> we need to install the SSM agent onto the systems onto the systems we control.
+-> install by default on Amazon Linux AMI and some Ubuntu AMI..
+
+-> if an instance can't be controlled with SSM , it's probably an issue with the 
+SSM agent.
+
+-> thanks to the SSM agent, we can run commands , patch and configure our servers.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

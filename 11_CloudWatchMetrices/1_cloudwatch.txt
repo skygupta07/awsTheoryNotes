@@ -1,0 +1,57 @@
+-------- amazon cloudWatch Metrices ------
+
+-> cloudWatch provides metrices for every services in AWS.
+-> metric is a variable to monitor (cpu utilization, Networking)
+-> metrices can have timestamps.
+-> can create cloudWatch dashboards for metrices.
+
+------ important Metrices ------
+
+1. EC2 instances: cpu utilization, status checks, Network (not RAM)
+    -> default metrices every 5 minutes.
+    -> option for detailed monitoring : metrices every minute (need to pay more)
+
+2. EBS volumes: disk read/write
+
+3. S3 buckets: bucketSizeBytes, NumberOfObjects, AllRequests
+
+4. Billing: total estimated charge (only in us-east-I) -> pyq. 
+5. service Limits: how much you have been using a service API.
+6. custom metrices: push your own metrices.
+
+------ amazon cloudWatch Alarms -----
+-> alarms are used to trigger notifications for any metric 
+-> alarms sections:
+    -> auto scaling: increase or decrease EC2 instances "desired" count.
+    -> EC2 actions: stop , terminate, reboot or recover an EC2 instance.
+    -> SNS notifications: send a notification into an SNS topic.
+
+-> various options (sampling, %, max, min, etc....)
+-> can choose the period on which to evaluate an alarm.
+-> example: create a billing alarm on the cloudwatch Billing metric.
+-> alarm states: OK, INSUFFICIENT_DATA, ALARM
+
+
+-> ek hi ec2 instance par 3 alarm laga diye....
+
+
+------cloudWatch Logs overview -----
+
+-> cloudWatch Logs can collect log from:
+    1. Elastic Beanstalk: collection of logs from application
+    2. ECS: collection from containers
+    3. AWS Lambda: collection form function logs.
+    4. cloudTrail based on filter
+    5. cloudWatch Log agents: on EC2 machines or on-premises servers
+    6. Route53: log DNS queries.
+
+-> enables real-time monitoring of logs.
+-> adjustable cloudWatch logs retention.
+
+----- cloudWatch logs for ec2 ------
+-> by default, no logs from your EC2 instance will go to cloudWatch.
+-> you need o run a cloudWatch agent on EC2 to push the log files you want
+-> make sure IAM permissions are correct.
+-> the cloudWatch log agent can be setup on-premises too...
+
+

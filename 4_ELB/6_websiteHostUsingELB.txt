@@ -1,0 +1,17 @@
+4 step process
+
+1. create two ec2 instance (take help of launch template -> same same hona sab dono mai)
+    amazon linux ka use kiya to iss baar choti advanced mai apna maal chipkaya..
+    created 2 ec2 instances...
+
+2. create AMI (from the instance)
+    include pending below...
+
+3. create target group 
+    select all zones...
+
+4. create ELB 
+    default settings rakhna....
+
+5. security group ko modify karo .... coffee/your website ki security group bhi 
+include kar do..

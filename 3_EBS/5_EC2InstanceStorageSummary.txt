@@ -1,0 +1,27 @@
+1. EBS volumes 
+    -> network drives attached to one EC2 instance at a time.
+    -> mapped to an availability zone.
+    -> can use EBS snapshots for backups/transferring EBS volumes across AZ.
+
+2. AMI (Amazon Machine Image)
+    create ready-to-use EC2 instances with our customizations
+
+3. EC2 image builder
+    -> automatically build, test and distribute AMIs.
+
+4. EC2 instance store
+    -> high performance hardware disk attached to our EC2 instance.
+    -> lost if our instance is stopped/terminated..
+
+5. EFS (Elastic File System)
+    -> network file system, can be attached to 100s of instances in a region..
+
+6. EFS-IA
+    cost-optimized storage class for infrequent accessed files.
+
+7. FSx for windows: network file system for windows servers
+
+8. FSx for lustre : High performance Computing Linux file system.
+
+----- finally last main section cleanup kiya dashboard ko taki kucch price na pay karna pade..by : 
+    deleting all the instances, deregistering AMIs,deleting volumes 

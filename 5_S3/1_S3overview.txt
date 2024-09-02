@@ -1,0 +1,181 @@
+-> amazon s3 is one of the main building blocks of AWS.
+-> it is advertised as "infinitely scaling" storage.
+
+-> many websites use Amazon S3 as a backbone.
+-> many aws services use Amazon S3 as an integration as well.
+
+---- use cases of S3 ---
+-> backup and storage
+-> disaster recovery
+-> archive (sasta padta hai)
+-> hybrid cloud storage.
+-> media hosting
+-> data lakes and big data analytics
+-> software delivery
+-> static website
+example :-> 
+`. Nasdaq stores 7 years of data into s3 glacier
+-> sysco runs analytics on its data and gains business insights.
+
+
+---- s3 buckets ------
+-> amazon s3 allows people to store objects (files) in "buckets" (directories)
+-> buckets must have a globally unique name (across all regions all accounts)
+-> though the buckets are defined at the region level
+-> s3 looks like a global service but buckets are created in a region.
+
+-> naming convention
+    -> no uppercase, no underscore
+    -> 3-63 characters long
+    -> not an IP
+    -> must start with lowercase letter or number
+    -> must not start with the prefix xn--
+    -> must not end with the suffix -s3alias
+
+---- amazon s3 objects ----
+    -> objects (files) have a key.
+    -> the key is the full path
+        -> s3://my-bucket/my_file.txt
+    
+    -> the key is composed of prefix _ object name  
+        -> s3://my-bucket/my_folderI/another_folder/my_file.txt
+
+    -> there's no concept of "directories" within buckets
+    (although the UI will trick you to think otherwise)
+
+    -> objects are keys with very long names that contain slashes ("/")
+
+    -> object values are the content of the body.
+        max object size is 5TB(5000 GB)
+        -> if uploading more than 5GB, must use "multi-part upload"
+
+    -> metadata (list of key/value pairs - system or user metadata)
+    -> tags (unicode key/ value pair - upto 10 ) - useful for security/lifecycle.
+    -> version ID (if versioning is enabled)
+
+->Every object in S3 is stored in a bucket. To upload files and folders to S3,
+you’ll need to create a bucket where the objects will be stored.
+
+-> With S3, there are no minimum fees. You only pay for what you use. 
+Prices are based on the location of your S3 bucket
+
+-> public url se apni pic nahi dekh paya...but private url allows to see my own pic...
+
+-> Use folders to group objects in buckets. When you create a folder, 
+S3 creates an object using the name that you specify followed by a slash (/).
+This object then appears as folder on the console.
+
+
+----- s3 security bucket policy --------
+1. user baseed 
+    -> IAM policies -> which API calls should be allowed for a specific user from IAM.
+    Identity and Access Management
+
+
+2. Resource-based
+    -> bucket policies -> bucket wide rules from the s3 console - allow cross account.
+    -> Object Access Control List (ACL) -> finer grain (can be disabled)
+    -> bucket access control List (ACL) -> less common (can be disabled)
+
+note -> and IAM principal can access an s3 object if 
+    -> the user IAM permissions allow it OR the resource policy Allows it.
+    -> AND there's no explicit deny...
+
+3. Encryption : encrypt objects in Amazon S3 using encryption keys.(jaruri hai)
+
+
+------s3 bucket policy --------
+
+1. JSON based policy (as you sow so will you REAP)
+    -> resources : buckets and objects.
+    -> effect : allow/deny
+    -> actions: set of API to allow or deny
+    -> principal : the account or user to apply the policy to..
+
+-> use s3 bucket for policy to : 
+    -> grant public access to the bucket.
+    -> force objects to be encrypted at upload.
+    -> grant access to another acount (cross account)
+
+
+-> public access -> use bucket policy 
+-> user access to s3 -> use IAM permissions
+-> EC2 instance access -> use IAM roles
+-> cross-Account access -> use bucket policy
+
+--- bucket settings for BLOCK public access
+    -> these settings were created to prevent company data leaks.
+    -> if you know your bucket should never be public, leave these on.
+    -> can be set at the account level.
+
+-> bhai aws ne json file bhi khud likh ke de deta hai...
+
+
+
+-----s3  - static website Hosting -------
+
+-> s3 can host static websites ans have them accessible on the internet.
+-> the website URL will be (depending on the region)
+    -> http://bucket-name.s3-website-aws-region.amazonaws.com
+    OR
+    -> http://bucket-name.s3-website.aws-region.amazonaws.com
+
+
+-> in case if you got a 403 forbidden error, make sure the bucket policy allows public reads.
+
+=> website host karne ke liye pehle bucket ko maal pani se bhar diya and then index.html se
+suruat deke website host kari....ek link ki help se website khol sakte ho...
+
+Amazon Resource Name (ARN)
+
+----- amazon s3 versioning -----
+
+-> you can version your files in Amazon S3
+-> it is enabled at the bucket level.
+-> same key overwrite will change the version : 1,2,3.....
+
+-> it is best practice to version your buckets
+    -> protect against unintended deletes (ability to restore a version)
+    -> easy roll back to previous versions.
+
+-> notes :-> 
+    -> any file that is not versioned prior to enabling versioning will have version "null"...
+    -> suspending versioning does not delete the previous versions.
+
+--- versioning kari aur jaake apni html file mai apna name change karke dubara se upload kar
+diya now new waala name show hone laga website pe....
+
+-> ek image ko delete karo to wo image philal to website se hat gayi and aws ne uska 
+delete marker bana ke rakh liya ....jo ki bata raha hai ki ye wali file delete ho chuki hai ...
+and now if you want to restore the pic again ...then iss delete marker ko hi delete kar do...
+
+
+--- s3 - Replication (CRR and SRR) --------
+
+-> must enable versioning in source and and destination buckets.
+-> cross-region Replication (CRR)
+-> same-region Replication (SRR)
+-> buckets can be in different AWS account
+-> copying is asynchronous
+-> must give proper IAM permissions to s3
+
+=> use cases :->
+-> CRR -> compliance, lower latency access, replication across accounts.
+-> SRR -> log aggregation, live replication between production and test accounts..
+
+-> matlab ek origin naam se aur ek replica naam se do bucket banayi alag alag region mai ...
+and do tab mai khola...
+then versioning enable kar di....
+now dono hi refresh karne par same cheez dikha rahe hai...
+mene bas origin naam ke bucket mai mariana trench ki pic upload kari and wo 
+replica waale mai bhi apne aap hi reflect hone lagi....
+
+Management mai jaake create kari replication rule
+
+rule scope mai jaake apply to all objects in the bucket (rule scope) kiya.....
+
+-> no, don't replicate existing object kiya..
+
+
+
+

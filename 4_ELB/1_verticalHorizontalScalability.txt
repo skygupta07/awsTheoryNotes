@@ -1,0 +1,41 @@
+-> scalibility means that an application/system can handle greater loads by adapting.
+-> two kinds of scalibility
+1. vertical 2. horizontal scalibility
+
+-> scalibility is linked but different to high availability...
+
+-> vertical scalability
+    -> vertical scalability means increasing the size of the instance.
+    senior operator in place of junior operator in call center...
+    -> vertical scalability is very common for non distributed systems, such as a database.
+    -> there is a limit to how much you can vertically scale(hardware limit)...
+    -> from t2.nano - 0.5G of RAM, I vCPU  TO u-12tbI.metal-12.3TB of RAM, 448 vCPUs..
+
+
+-> horizontal scalability 
+    -> means increasing the number of instances/systems for your application.
+    -> implies distributed systems.
+    -> very common for web applications/modern applications.
+    -> it is easy to horizontally scale thanks the cloud offerings such as Amazon EC2.
+    -> auto scaling group
+    -> load balancer
+
+-> High availability
+    -> high availability usually goes in hand in hand with horizontal scaling.
+    -> means running your application/system in at least 2 availability zones.
+    -> the goal of high availability is to survive a data center loss(disaster)...
+    -> auto scaling Group multi AZ
+    -> Load balancer multi AZ
+
+
+1. scalibility -> ability to accomodate a larger load by making the hardware stronger (scale up)
+or by adding nodes.
+
+2. Elasticity -> once a system is scalable, Elasticity means that there will be some 
+"auto-scaling" so that the system can scale based on the load. This is cloud friendly:
+pay-per-use , match demand, optimize costs.
+
+3. agility -> (not related to scalibility - distractor) -> new IT resources are only a click away, 
+which means that you reduce the time to make those resources available to your developers 
+from weeks to just minutes..
+

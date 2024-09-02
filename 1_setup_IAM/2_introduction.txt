@@ -1,0 +1,78 @@
+early days mai garage mai server baithaya but maintenance costly...
+post office example  
+
+aaj netflix, airbnb, nasa , dropbox sab aws se chal raha hai...
+
+cloud computing 
+on demand delivery 
+pay as you go pricing
+size decidable instantly
+example 
+email cloud service , dropbox, netflix, mcdonalds, century fox
+
+1. private cloud -> like our ums (university management system)
+
+2. public cloud -> azure aws google cloud
+3. hybrid cloud -> 
+
+-> charactersistcs 
+1. on demand self service 
+2. broad network access 
+3. multi tenancy and resource pooling
+4. rapid elasticity and scalability
+
+advantages 
+1. trade capital expense (capex) for operational expense (opex)
+2. benefit from massive economies of scale 
+3. stop guessing capacity 
+4. increase speed and agility 
+5. stop spending money running and maintaining data centers
+6. go global in minutes
+
+flexible cost effective scalable elasticity etc...
+
+------------------
+
+types of cloud computing 
+
+1. infrastructure as service (iaas)
+example -> amazon EC2 , gcp , azure, rackspace
+
+2. platform as a service (paas)
+example -> elastic, beanstalk (on aws) , google app engine (gcp)
+
+3. software as a service (SaaS)
+example -> aws services (recognition of ML), gmail, dropbox, zoom
+
+
+aapka SaaS mai everything is managed by the aws....
+application data runtime middleware operatingSystem virtualization servers storage networking
+
+how aws charge?
+
+3 pricing fundamentals -> docs (data out computing storage)
+compute , storage, data transfer out of cloud
+
+(data transfer in is free)
+
+---------------------
+history of aws 
+
+2002 se start
+
+-> aws regions, availability, data centers, locations 
+(global infrastructure)
+
+aws has regions all aroud the world
+
+how to choose an aws region ? 
+1. compliance with govt.
+2. proximity of number of user in country
+3. availalbe services 
+4. pricing 
+
+aws availability zones....to save data in disaster
+aws regional services -> to see the available service in any regional...
+
+
+aws responsibility for the security of the cloud..
