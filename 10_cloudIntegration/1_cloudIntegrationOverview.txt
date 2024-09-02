@@ -1,0 +1,113 @@
+-> when we start deploying multiple applications, they will inevitably need to communicate
+with one another.
+
+-> there are two patterns of application communication
+    1. synchronous communication (application to application)
+        example -> buying service communicating directly with shipping service...
+
+    2. asynchronous/event based (application to queue to application)
+        buying service -> queue (in betweeen) -> shipping service
+
+
+-> synchronous between applications can be problematic if there are sudden spikes of traffic.
+-> what if you need to suddenly encode 1000 videos but usually it's 10?
+
+-> in that case it's better to decouple your applications
+    -> using SQS: queue model
+    -> using SNS: pub/sub model
+    -> using kinesis: real-time data streaming model
+
+-> these services can scale independently from our application.
+
+
+
+---------- Amazon SQS - simple Queue Service ----------
+
+1. what is a queue?
+    producer send message to consumer but in between the messages are piled up into the queue.
+    
+-> oldest AWS offering (over 10 years old)
+-> fully managed service (~serverless), use to decouple applications
+-> scales from 1 message per second to 10,000s per second.
+-> default retention of messages: 4 days, max of 14 days.
+-> no limit to how many messages can be in the queue.
+-> messages are deleted after they are read by consumers.
+-> low latency (<10ms on publish and receive)
+-> consumers share the work to read message and scale horizontally.
+
+=> sqs can be used to decouple between application tiers
+    -> web servers mai aapke ec2 instances hai unse video streaming ka masala leke 
+    SQS queue mai put kiya which helped the video processing smoother on the next ec2 instance.
+    
+
+-------- Amazon SQS - FIFO Queue -------
+-> fifo = ordering of messages in the queue
+-> messages are processed in the order by the consumer.
+
+-> messages receive karne ke liye poll for messages kiya...
+
+
+----- kinesis overview -------
+
+-> for the exam: kinesis = real-time big data streaming
+-> managed service to collect, process, and analyze real-time streaming data at any scale.
+
+-> kinesis data stream: low latency streaming to ingest data at scale from hundreds of 
+thousands of sources.
+-> kinesis data firehose: load streams into s3, redshift,elasticsearch,etc.
+-> kinesis data analytics: perform real-time analytics on stream using SQL.
+-> kinesis video streams: monitor real-time video streams for analytics of ML.
+
+---- amazon SNS ---------------
+
+-> SNS stands for Simple Notification Service
+-> what if you want to send one message to many receivers?
+    -> direct integration
+        => buying service to email notificaton, fraud service, shipping service, sqs queue...
+    -> pub/sub
+        ab buying service ke baad SNS topic aa jayega beech mai...
+
+-> the event publishers only sends message to one SNS topic.
+-> as many "event subscribers" as we want to listen to the SNS topic notifications.
+-> each subscriber to the topic will get all the messages.
+> upto 12,500,000 subscriptions per topic 100,000 topics limit.
+
+SNS publish subscribers(sqs, lambda, kinesis data firehose, emails, sms and notifictions, HTTP)
+
+------ accha ab samajh aaya mai yaha college ka admin hu ... bas ek email likhunga aur
+wo sabko broadcast ho jaega... jo jo bhi mujhse subscribe ho rakhe honge un sabko message chala jayega..
+
+
+---- amazon MQ ---------------
+
+-> SQS, SNS are "cloud-native" services: proprietary protocols from AWS.
+-> traditional applications running from on-premises may use open protocols such as
+MQTT, AMQP, STOMP, Openwire, WSS.
+-> when migrating to the cloud, instead of re-engineering the application to use 
+SQS and SNS, we can use Amazon MQ.
+
+-> amazon MQ is a managed message broker service for
+    1. rabbit MQ     2. active MQ
+
+-> amazon MQ doen't "scale" as much as SQS/SNS.
+-> amazon MQ runs on servers, can run in multi AZ with failover.
+-> amazon MQ has bith queue features (SQS) and topic feature (SNS)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

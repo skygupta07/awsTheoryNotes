@@ -1,0 +1,20 @@
+------- cloud integration summary -------
+
+1. SQS 
+    -> queue service in AWS
+    -> multiple producers, messages are kept upto 14 days.
+    -> multiple consumers, share the read and delete messages when done.
+    -> used to decouple applications in AWS.
+
+2. SNS
+    -> notifications service in AWS
+    -> subscribers: email, lambda, SQS, HTTP, mobile
+    -> multiple subscribers, send all messsages to all of them.
+    -> no message retention.
+
+3. kinesis
+    -> real-time data streaming, persistence and analysis.
+
+4. Amazon MQ : managed message broker for Active MQ and Rabbit MQ in the cloud (MQTT, AMQP, protocol)
+
+
