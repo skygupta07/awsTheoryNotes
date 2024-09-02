@@ -1,0 +1,11 @@
+1. ec2 instance -> AMI (OS) + instance size (cpu + ram) + storage + security groups + EC2 user data
+2. security groups: firewall attached to the EC2 instance
+3. EC2 user data : script launched at the first start of an instance
+4. ssh : start a terminal into our EC2 instances (port 22)
+5. EC2 instance role : link to IAM roles
+6. purchasing options : on-demand , spot, reserved, (standard + convertible + schedule),
+dedicated hosts, dedicated instance.
+
+
+IAM (Identity and Access management) -> Access management for AWS services and resources.
+Manage fine-grained permissions and analyze access to refine permissions.

@@ -1,0 +1,106 @@
+--EC2 instances Purchasing options------
+
+1. on demand instances -> short workload, predicatable pricing, pay by second
+    EC2 on demand 
+    -> pay for whay you use:
+        linux or windows - billing per second, after the first minute
+        all other operatingSystems - billing per hour
+
+    -> has the highest cost but no upfront payment.
+    -> no long term commitment
+    -> recommended for short-term and un-interrupted workloads, where you can't predict how 
+    the application will behave..
+
+
+2. Reserved (1 and 3 years)
+    -> Reserved instances (instance type, region, tenancy, os)- long workloads
+    -> convertible Reserved instances - long workloads with flexible instances
+    -> upto 72 percent discount compared to on-demand
+    -> reservation period -> 1 year(+discount) or 3years(+++ discount)
+    -> payment options -> No upfront(+), partial upfront (++), all upfront(+++)
+    reserved instance's scope -> regional or zonal 
+    -> convertible reserved instances
+
+
+
+3. Saving Plans (1 and 3 years) - commitment to an amount of usage, long workload.
+    discount upto 72 percent
+    -> commit to a certain type of usage ($10/hr for 1 or 3 years)
+    -> usage beyond EC2 savings plans is billed at the On-demand price.
+
+    -> locked to a specific instance family and AWS region (e.g. M5 in us-east-1)
+    -> flexible across 
+            -> instance size (e.g. m5.xlarge, m5.2xlarge)
+            -> OS (e.g. Linux, windows)
+            -> Tenancy (host, dedicated, default)
+
+    
+
+
+4. spot instances - short workloads, cheap, can lose instances(less reliable)
+    can get a discount of upto 90 percent compared to ondemand
+    -> instances that you can "lose" at any point of time if your max price is less than the current 
+    spot price
+    -> the most cost efficient instances in AWS
+
+    -> useful for workloads that are resilient to failure
+        batch jobs, data analysis, image processing, any distributed workloads, workloads
+        with a flexible start and end time...
+
+
+
+
+5. Dedicated hosts - book an entire physical server, control instance placement.
+    -> a physical server with EC2 instance capacity fully dedicated to your use.
+    -> allows you address compliance requirements and use your existing sever bound 
+    software licenses (per-socket, per-core, per-VM software licenses)
+
+    -> purchasing options: 
+        on-demand -> pay per second for active dedicated host
+        reserved -> 1 or 3 years (No upfront, partial upfront , all upfront)
+    -> the most expensive option it is
+    -> useful for software that have complicated licensing model (BYOL - Bring Your Own License)
+    -> or for companies that have strong regulatory for compliance needs
+
+
+6. dedicated instances - no other customers will share your hardware.
+    -> instances run on hardware that's dedicated  to you.
+    -> may share hardware with other instances in same account.
+    -> no control over instance placement.
+
+7. capacity Reservation - reserve capacity in a specific AZ for any duration...
+    Reserve on Demand instances capacity in a specific AZ for any duration
+    -> you always have access to EC2 capacity when you need it.
+    -> no time commitment (create/cancel) anytime , no billing discounts
+    -> combine with regional reserved instances and savings plan to benefit from billing 
+    discounts.
+    -> shot term, uninterrupted workloads that needs to be in a specific AZ
+
+ANALOGY
+
+    1. on demand -> coming an staying in resort whenever we like , we pay the full price (100)
+    2. reserved -> like planning ahead and if we plan to stay for a long time, we may get a (7)
+    good discount
+    3. savings -> pay a certain amount per hour for certain period and stay in any room (6)
+    type...sea facing
+    4. spot instances -> the hotel allows people to bid for the empty rooms and the highest (4)
+    bidder keeps the room, you can get kicked out at any time.
+    5. dedicated hosts -> we book an entire building of the resort.
+    6. capacity reservations -> you book a room for a period with full price even you don't stay in it.
+
+
+ -- shared responsibility model for EC2 ---------
+
+    1. aws responsibility 
+    -> infrastructure (global network security)
+    -> isolation on physical hosts
+    -> replacing faulty hardware
+    -> compliance validation
+
+   2. user responsibility
+    -> define security group rules
+    -> operating system patches and updates 
+    -> software and utilities installed on the EC2 instances
+    -> IAM roles assigned to EC2 and IAM user access management
+    -> data security on your instance.
+    

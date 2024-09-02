@@ -1,0 +1,45 @@
+-> aws naming convention   m5.2xlarge
+m : instance class
+5 : generation (AWS improves them over time)
+2xlarge : size within the instance class
+
+-> there are 7 types of instances
+    G SCAM IMP 
+
+1. general purpose 
+    great for a diversity of workloads such as web servers or code repositories 
+    -> balance between : compute memory networking
+    -> we will be using t2.micro which is a general purpose EC2 instance...
+
+2. compute optimised
+    great for compute-intensive tasks that require high performance processors..
+    -> batch processing workloads
+    -> media transcoding
+    -> high performance webservers
+    -> high performance computing (hpc)
+    -> scientific modelling and machine learning
+    -> dedicated gaming servers
+    example -> c5 , starting with c
+
+3. memory optimised
+    fast performance for workloads that process large data sets in memory
+    use cases:
+        high performance, relational/non-relational databases
+        distributed web scale cache stores
+        in memory databases optimized for BI (business Intelligence)
+        applications performing real time processing of big unstructured data
+
+4. accelerated computing
+
+5. storage optimized
+    
+6. instance features
+
+7. measuring instance performance
+
+ example
+ t2.micro instance provides vCPU(1) , Mem(1 GiB) storage (EBS only) Network performance(low to moderate)
+ -- t2.micro is part of the AWS free tier (upto 750 hours per month)
+
+
+ you can compare instances on ec2instance...

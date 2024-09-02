@@ -1,0 +1,55 @@
+security groups (kind of firewall) are the fundamental of network security in AWS
+they control how traffic is allowed into or out of our EC2 instances.
+
+!!security group only contain allow rules!!. (ek haath se taali nahi bajti rule)
+security groups rules can reference by IP or by security group..
+
+------
+
+ ==> outbound rule ko ched mat dena .....  (mahatma gandhi)
+
+
+
+ 
+security groups are acting as firewall on EC2 instances
+-> they regulate : 
+1. access to ports 
+2. authorised ip ranges - IPv4 and IPv6
+3. * control of inbound network (from other to the instance)
+4. control of outbound network (from the instance to other)
+
+----- security groups --------
+    -> can be attached to multiple instances
+    -> locked down to a region/VPC combination
+    -> does live "outside" the EC2 -> if traffic is blocked the EC2 instance won't see it.
+    -> it is good to maintain one separate security group for SSH access
+   imp -> if your application is not accessible (time out) then it's a security group issue.
+    -> if your application gives a "connection refused" error, then it's an application error 
+    or it's not launched...
+
+A virtual private cloud (VPC) is an on-demand configurable pool of shared resources 
+allocated within a public cloud environment, providing a certain level of isolation 
+between the different organizations using the resources.
+
+
+ALL INBOUND TRAFFIC IS BLOCKED BY DEFAULT
+ALL OUTBOUND TRAFFIC IS authorised BY DEFAULT
+
+search kucch bhi kar sakte ho... ab wo alag baat hai saamne wali website accessible 
+hai ki nahi..
+
+-------classic ports to know-----------
+
+port 21 = FTP (file transfer protocol) -> upload files into a file share
+port 22 = SSH(secure shell) -> log into a Linux instance
+port 22 = SFTP (secure file transfer protocol) -> uploading files using SSH
+port 80 = HTTP -> access unsecured websites (ye to bahut kiya hai tooplate.com wale se...)
+port 443 = HTTPS -> access secured websites
+port 3389 = RDP (Remote Desktop Protocol) -> log into a windows instance
+
+0.0.0.0/0 -> access from anywhere
+
+in case kabhi bhi EC2 instance mai timeout (infinite loop) wali issue aa jaye to aap simply
+instance ki security group mai jaana and inbound rules edit karke dekho waha 1. ssh 2. http 
+
+for sure hona chahiye ...agar nahi hai to create karo...

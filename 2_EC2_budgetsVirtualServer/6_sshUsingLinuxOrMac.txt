@@ -1,0 +1,15 @@
+-> how to ssh into your EC2 instance using Linux/mac
+
+-> ssh is one of the most important function. It allows you to control a remote machine,
+all using the command line.
+
+ec2 instance connect aap terminal se bhi kar sakte ho ssh ki help se OR EC2 instance connect
+kar sakte ho aap online aws se bhi...online waala hi jyada better hai...(noobs ke liye) 
+
+right side mai jaake edit inbound rules ka box mila..
+
+-> The Secure Shell Protocol (SSH) is a cryptographic network protocol 
+for operating network services securely over an unsecured network
+
+-> cryptography is about constructing and analyzing protocols that 
+prevent third parties or the public from reading private messages

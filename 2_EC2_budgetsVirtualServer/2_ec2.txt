@@ -1,0 +1,50 @@
+EC2 is one of the most popular of AWS offering , stands for Elastic Compute Cloud
+EC2 knowledge is fundamental to understand how the cloud works... 
+ec2 serves as iaas infrastructure as a service
+
+it mainly consists in the capability of ->
+1. renting virtual machines (EC2)
+2. Storing data on virtual drives (EBS)
+3. distributing load across machines (ELB)
+4. scaling the services using an auto scaling group (ASG)
+
+------EC2 sizing and configuration options -------
+factors
+1. operatingSystem: linux, windows, mac
+2. how much compute power and cores(CPU) ,RAM, storage space needed?
+3. network attached (EBS and EFS) , hardware (EC2 instances)
+4. network card : speed of card, public IP address
+firewall, bootstrap script (configure at first launch) : EC2 user data...
+
+---------- EC2 user data ----
+
+It is possible to bootstrap our instances using an EC2 user data script.
+bootstraping means launching commands when a machine starts, that script is only run once at the
+instance first start.
+-> EC2 user data is used to automate boot tasks such as: 
+    - installing updates
+    - installing software
+    - downloading common file from internet
+
+EC2 instance types examples -> t2.micro (provided in amazon free tier), t2.xlarge, c5d.4xlarge, ....
+for example in r5.16xlarge -> we get 64 (vCPU) , mem (512 GIB) , storage (EBS only), network performance (20 Gbps)
+EBS bandwidth (13,600 Mbps)
+
+---- creation of EC2 instance --------
+
+1. choose an AMI
+2. choose an instance type
+3. configuring the instance
+4. adding storage
+5. adding tags.
+6. configure security groups.
+7. review
+
+
+
+
+
+
+
+
+
