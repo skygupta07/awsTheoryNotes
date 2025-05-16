@@ -89,9 +89,9 @@ SQS and SNS, we can use Amazon MQ.
 -> amazon MQ is a managed message broker service for
     1. rabbit MQ     2. active MQ
 
--> amazon MQ doen't "scale" as much as SQS/SNS.
+-> amazon MQ doesn't "scale" as much as SQS/SNS.
 -> amazon MQ runs on servers, can run in multi AZ with failover.
--> amazon MQ has bith queue features (SQS) and topic feature (SNS)
+-> amazon MQ has both queue features (SQS) and topic feature (SNS)
 
 
 

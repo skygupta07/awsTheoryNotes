@@ -16,5 +16,8 @@
     -> real-time data streaming, persistence and analysis.
 
 4. Amazon MQ : managed message broker for Active MQ and Rabbit MQ in the cloud (MQTT, AMQP, protocol)
+MQTT stands for Message Queuing Telemetry Transport, and 
+AMQP stands for Advanced Message Queuing Protocol. Both are messaging protocols 
+used in various applications, particularly in the Internet of Things (IoT) and distributed systems. 
 
 

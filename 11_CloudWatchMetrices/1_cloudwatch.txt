@@ -16,6 +16,7 @@
 3. S3 buckets: bucketSizeBytes, NumberOfObjects, AllRequests
 
 4. Billing: total estimated charge (only in us-east-I) -> pyq. 
+
 5. service Limits: how much you have been using a service API.
 6. custom metrices: push your own metrices.
 
@@ -50,7 +51,7 @@
 
 ----- cloudWatch logs for ec2 ------
 -> by default, no logs from your EC2 instance will go to cloudWatch.
--> you need o run a cloudWatch agent on EC2 to push the log files you want
+-> you need to run a cloudWatch agent on EC2 to push the log files you want
 -> make sure IAM permissions are correct.
 -> the cloudWatch log agent can be setup on-premises too...
 

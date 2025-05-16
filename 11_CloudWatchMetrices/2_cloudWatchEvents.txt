@@ -2,7 +2,7 @@
 -> schedule : cron jobs (scheduled scripts)
       -> schedyle every hour that trigger script on lambda function
 
--> event pattern: event rules to react ot a service doing something
+-> event pattern: event rules to react at a service doing something
     -> matalb in case root user signin karta hai to SNS ke through email notification send karwa do...
 
 -> trigger Lambda functions, send SQS/SNS messages.
@@ -18,10 +18,10 @@ custom apps -> custom event BUS se linked
 
 ----- AWS cloudTrail ------------
 
--> povides governance , compliacne and audit fro your aws account
+-> povides governance , compliance and audit from your aws account
 -> cloudTrail is enabled by default 
 -> get an history of events/API calls made within your AWS account by:
-     -> console -> sdk -< cli -> aws services 
+     -> console -> sdk -> cli -> aws services 
 -> can put logs form cloudTrail into cloudWatch logs or s3
 -> a trail can be applied to all regions (default) or a single region.
 -> if a resource is deleted in AWS, investigate cloudTRail first.
@@ -68,7 +68,7 @@ x-ray gives visual analysis of our application.
 -> helps understand the runtime behaviour of your application.
 -> example: identify if your application is consuming excessive cpu capacity on a logging routine.
 -> features:
-     -> identify and remove code inefficinecs.
+     -> identify and remove code inefficiency.
     -> improve application perfomance
      -> decrease compute costs.
      -> provides heap summary (identify which objects using up memory)
@@ -86,9 +86,14 @@ x-ray gives visual analysis of our application.
 
 -------- AWS health Dashboard - your account -----------
 -> previously called AWS personal Health Dashboard (PHD)
--> AWS account Health dashboard provides alerts, and remediation guidance when aws is experiencing events that may impact you.
--> while the service health dashboard displays the general status of AWS services, accout health dashboard gives you a personalized view into the performance and availabilty of the aws services underlying your aws resources.
--> the dashboard displays relevant and timely informaton to help you manage events in progress and provides proactive noriiaciton to help you plan for schduled activiteis.
+-> AWS account Health dashboard provides alerts, and remediation guidance when aws 
+     is experiencing events that may impact you.
+-> while the service health dashboard displays the general status of AWS services, 
+accout health dashboard gives you a personalized view* into the performance and availabilty 
+of the aws services underlying your aws resources.
+
+-> the dashboard displays relevant and timely informaton to help you manage events 
+in progress and provides proactive notification to help you plan for scheduled activities.
 -> can aggregate data from an entire AWS organizations.
  
 
@@ -104,8 +109,10 @@ x-ray gives visual analysis of our application.
 
 3. cloud Trail Insights: automated analysis of your cloudTrail Events.
 4. x-ray: trace requests made through your distributed applications.
-5. aws health dashboard: status of all aws services across alll regions.
-6. aws Account Health Dashboard: AWS events that impact your infrastructre.
-7. amazon CodeGuru: automated code reviews and application perforamance recommendations.
+
+5. aws health dashboard: status of all aws services across all regions.
+6. aws Account Health Dashboard: AWS events that impact your infrastructure.
+
+7. amazon CodeGuru: automated code reviews and application performance recommendations.
 
 
